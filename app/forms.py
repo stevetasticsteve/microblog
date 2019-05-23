@@ -26,3 +26,9 @@ class RegistrationForm(flask_wtf.FlaskForm):
         user = User.query.filter_by(email=email.data).first()
         if user is not None:
             raise wtforms.validators.ValidationError('Please use a different email address.')
+
+
+class editProfileForm(flask_wtf.FlaskForm):
+    username = wtforms.StringField('Username', validators = [wtforms.validators.DataRequired()])
+    about_me = wtforms.TextAreaField('About me', validators = [wtforms.validators.Length(min=0, max=140)])
+    submit = wtforms.SubmitField('Submit')
