@@ -80,7 +80,7 @@ def user(username):
 @app.route('/edit_profile', methods = ['GET', 'POST'])
 @flask_login.login_required
 def edit_profile():
-    form = editProfileForm()
+    form = editProfileForm(current_user.username)
     if form.validate_on_submit():
         flask_login.current_user.username = form.username.data
         flask_login.current_user.about_me = form.about_me.data
@@ -92,3 +92,4 @@ def edit_profile():
         form.about_me.data = flask_login.current_user.about_me
     return flask.render_template('edit_profile.html', title='Edit profile',
                                  form = form)
+
