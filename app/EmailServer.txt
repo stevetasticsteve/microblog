@@ -1,0 +1,9 @@
+To run an email server:
+
+Open a 2nd terminal:
+python -m smtpd -n -c DebuggingServer localhost:8025
+
+in the 1st terminal:
+set MAIL_SERVER=localhost
+set MAIL_PORT=8025
+flask run
